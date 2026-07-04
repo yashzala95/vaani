@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-cream-border dark:border-dark-border;
+  }
+  body {
+    @apply bg-cream text-gray-900 dark:bg-dark-bg dark:text-gray-100 transition-colors duration-300;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+@layer components {
+  /* Glassmorphic rounded card - poore app me use hoga */
+  .card {
+    @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-xl border border-cream-border dark:border-dark-border
+    rounded-3xl shadow-soft dark:shadow-none;
+  }
+
+  /* Primary CTA button - lime accent, pill shaped (reference design se inspired) */
+  .btn-primary {
+    @apply bg-accent-400 text-gray-900 font-semibold px-6 py-3 rounded-full
+    hover:bg-accent-300 hover:shadow-glow-accent transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply bg-white dark:bg-dark-surface text-gray-800 dark:text-gray-200 font-semibold px-6 py-3 rounded-full
+    border border-cream-border dark:border-dark-border hover:border-primary-400 dark:hover:border-primary-500
+    transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  /* Caption preview animations - CaptionOverlay component isse use karta hai */
+  .animate-caption-pop {
+    animation: captionPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .animate-caption-slide {
+    animation: captionSlide 0.35s ease-out;
+  }
+
+  /* Floating decorative orb - 3D glassy feel */
+  .orb {
+    @apply absolute rounded-full blur-2xl opacity-60 pointer-events-none;
+  }
+}
+
+@keyframes captionPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes captionSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ambient floating icon orbs ke liye - slow, organic drifting motion */
+@keyframes driftPath {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(18px, -24px) rotate(8deg);
+  }
+  50% {
+    transform: translate(-14px, 18px) rotate(-6deg);
+  }
+  75% {
+    transform: translate(22px, 12px) rotate(5deg);
+  }
+}
+
+/* Custom scrollbar - premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-200 dark:bg-dark-border rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-400;
+}

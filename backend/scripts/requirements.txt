@@ -1,0 +1,4 @@
+# Free, local, offline speech-to-text (no API key needed)
+# Version pinned nahi kiya - latest version prebuilt Windows wheels
+# use karta hai (koi C++ Build Tools compile karne ki zaroorat nahi)
+faster-whisper>=1.1.0

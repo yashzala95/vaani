@@ -56,6 +56,10 @@ app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 app.use("/outputs", express.static(path.join(__dirname, "..", "outputs")));
 
 // ------------------- HEALTH CHECK -------------------
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Vaani API is running 🎙️" });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ success: true, message: "Server is running fine 🚀" });
 });
